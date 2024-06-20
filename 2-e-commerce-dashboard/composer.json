@@ -1,0 +1,19 @@
+{
+  "name": "rojaksen/e-commerce-dashboard",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    },
+    "files": [
+      "src/functions.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "RazaqHimawan",
+      "email": "razaqhim@gmail.com"
+    }
+  ],
+  "require": {}
+}

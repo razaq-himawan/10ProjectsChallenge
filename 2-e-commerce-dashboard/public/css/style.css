@@ -1,0 +1,36 @@
+.table tbody tr:last-child :is(td, th) {
+  border-bottom-width: 0;
+}
+
+.btn-ellipsis {
+  border-color: transparent !important;
+
+  &:focus {
+    color: var(--bs-secondary-color) !important;
+  }
+}
+
+.outline-none {
+  outline: none !important;
+  &:focus {
+    outline: none !important;
+  }
+}
+
+.top-10 {
+  top: 10px !important;
+}
+
+.end-10 {
+  right: 10px !important;
+}
+
+.col-w-60 {
+  width: 60% !important;
+}
+
+.color-preview {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
