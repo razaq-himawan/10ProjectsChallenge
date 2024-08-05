@@ -1,0 +1,152 @@
+<% layout('admin/layouts/admin') %>
+
+<h1 class="text-center">Edit Stock</h1>
+<div class="col-6 offset-3">
+  <form
+    action="/dashboard/stocks/<%= stock._id %>?_method=PUT"
+    method="POST"
+    class="validated-form"
+    novalidate
+  >
+    <div class="mb-3">
+      <label
+        for="name"
+        class="form-label"
+      >
+        Name
+      </label>
+      <input
+        type="text"
+        name="stock[name]"
+        id="name"
+        class="form-control"
+        value="<%= stock.name %>"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="amount"
+        class="form-label"
+      >
+        Amount
+      </label>
+      <input
+        type="number"
+        name="stock[amount]"
+        id="amount"
+        class="form-control"
+        value="<%= stock.amount %>"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="price"
+        class="form-label"
+      >
+        Price
+      </label>
+      <input
+        type="number"
+        name="stock[price]"
+        id="price"
+        class="form-control"
+        value="<%= stock.price %>"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="type"
+        class="form-label"
+      >
+        Type
+      </label>
+
+      <select
+        name="stock[type]"
+        id="type"
+        class="form-select"
+      >
+        <option
+          selected
+          disabled
+          hidden
+          value="<%= stock.type %>"
+        >
+          <span class="text-lowercase"
+            ><%=
+            `${stock.type.charAt(0).toUpperCase()}${stock.type.substring(1).toLowerCase()}`
+            %></span
+          >
+        </option>
+        <option value="FOOD">Food</option>
+        <option value="DRINK">Drink</option>
+        <option value="APPETIZER">Appetizer</option>
+      </select>
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="imgPath"
+        class="form-label"
+      >
+        Image path
+      </label>
+      <input
+        type="text"
+        name="stock[imgPath]"
+        id="imgPath"
+        class="form-control"
+        value="<%= stock.imgPath %>"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="desc"
+        class="form-label"
+      >
+        Description
+      </label>
+
+      <textarea
+        class="form-control"
+        id="desc"
+        name="stock[desc]"
+      >
+<%= stock.desc %></textarea
+      >
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-success"
+    >
+      Edit
+    </button>
+  </form>
+</div>

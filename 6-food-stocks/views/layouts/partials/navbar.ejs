@@ -1,0 +1,107 @@
+<nav
+  class="navbar navbar-expand-lg bg-dark fixed-top"
+  data-bs-theme="dark"
+>
+  <div class="container-fluid">
+    <a
+      class="navbar-brand"
+      href="/"
+    >
+      Toko Bunda
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav"
+    >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <% if (currentUser?.role === "ADMIN") { %>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/dashboard/stocks"
+          >
+            Dashboard
+          </a>
+        </li>
+        <% } %>
+      </ul>
+
+      <ul class="navbar-nav">
+        <% if (currentRoute === "/") { %>
+        <li class="nav-item">
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample"
+          >
+            <img
+              src="/icons/cart.svg"
+              alt="cart"
+            />
+          </button>
+        </li>
+        <% } %>
+        <!--  -->
+        <% if(!currentUser) { %>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/login"
+          >
+            Login
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/register"
+          >
+            Register
+          </a>
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            href="/logout"
+            onclick="
+              event.preventDefault()
+              document.querySelector('#logout-form').submit()
+            "
+          >
+            Logout
+          </button>
+          <form
+            action="/logout"
+            method="POST"
+            id="logout-form"
+            style="display: none"
+          >
+          </form>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

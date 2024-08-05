@@ -1,0 +1,65 @@
+<nav
+  id="sidebar"
+  style="width: 240px"
+  class="cd-flex flex-column flex-shrink-0 p-3 text-bg-dark offcanvas offcanvas-start show offcanvas offcanvas-start show"
+  data-bs-scroll="true"
+  data-bs-backdrop="false"
+>
+  <a
+    href="/"
+    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+  >
+    <span class="fs-4">Food Stocks</span>
+  </a>
+  <hr />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li>
+      <a
+        href="/dashboard/stocks"
+        class="nav-link text-white <%= currentRoute === '/dashboard/stocks' ? 'active' : '' %>"
+      >
+        Stocks
+      </a>
+    </li>
+    <li>
+      <a
+        href="/dashboard/customers"
+        class="nav-link text-white <%= currentRoute === '/dashboard/customers' ? 'active' : '' %>"
+      >
+        Customers
+      </a>
+    </li>
+  </ul>
+  <hr />
+  <div class="dropdown">
+    <a
+      href="#"
+      class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Caret Down
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+      <li>
+        <button
+          class="dropdown-item"
+          href="/logout"
+          onclick="
+            event.preventDefault()
+            document.querySelector('#logout-form').submit()
+          "
+        >
+          Logout
+        </button>
+        <form
+          action="/logout"
+          method="POST"
+          id="logout-form"
+          style="display: none"
+        >
+        </form>
+      </li>
+    </ul>
+  </div>
+</nav>

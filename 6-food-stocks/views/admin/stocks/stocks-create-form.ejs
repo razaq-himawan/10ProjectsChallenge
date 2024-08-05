@@ -1,0 +1,140 @@
+<% layout('admin/layouts/admin') %>
+
+<h1 class="text-center">Create Stock</h1>
+<div class="col-6 offset-3">
+  <form
+    action="/dashboard/stocks/create"
+    method="POST"
+    class="validated-form"
+    novalidate
+  >
+    <div class="mb-3">
+      <label
+        for="name"
+        class="form-label"
+      >
+        Name
+      </label>
+      <input
+        type="text"
+        name="stock[name]"
+        id="name"
+        class="form-control"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="amount"
+        class="form-label"
+      >
+        Amount
+      </label>
+      <input
+        type="number"
+        name="stock[amount]"
+        id="amount"
+        class="form-control"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="price"
+        class="form-label"
+      >
+        Price
+      </label>
+      <input
+        type="number"
+        name="stock[price]"
+        id="price"
+        class="form-control"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="type"
+        class="form-label"
+      >
+        Type
+      </label>
+
+      <select
+        name="stock[type]"
+        id="type"
+        class="form-select"
+      >
+        <option
+          selected
+          disabled
+          hidden
+          >Select type</option
+        >
+        <option value="FOOD">Food</option>
+        <option value="DRINK">Drink</option>
+        <option value="APPETIZER">Appetizer</option>
+      </select>
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="imgPath"
+        class="form-label"
+      >
+        Image path
+      </label>
+      <input
+        type="text"
+        name="stock[imgPath]"
+        id="imgPath"
+        class="form-control"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="desc"
+        class="form-label"
+      >
+        Description
+      </label>
+
+      <textarea
+        class="form-control"
+        id="desc"
+        name="stock[desc]"
+      ></textarea>
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-success"
+    >
+      Create
+    </button>
+  </form>
+</div>

@@ -1,0 +1,129 @@
+<% layout('layouts/app') %>
+
+<div class="container my-5">
+  <section>
+    <div class="p-3 mb-4 bg-body-tertiary rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Custom jumbotron</h1>
+        <p class="col-md-8 fs-4"
+          >Using a series of utilities, you can create this jumbotron, just like
+          the one in previous versions of Bootstrap. Check out the examples
+          below for how you can remix and restyle it to your liking.</p
+        >
+      </div>
+    </div>
+  </section>
+
+  <div class="d-flex flex-column gap-4">
+    <section>
+      <div>
+        <h3>Food Products</h3>
+      </div>
+      <div class="row gap-2">
+        <% for (const food of foods) { %>
+        <div
+          class="card p-0"
+          style="width: 18rem"
+        >
+          <img
+            src="<%= food.imgPath %>"
+            class="card-img-top img-thumbnail"
+            alt="<%= food.name %>"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= food.name %></h5>
+            <p class="card-text text-truncate"><%= food.desc %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Rp. <%= food.price %></li>
+          </ul>
+          <div class="card-body">
+            <button
+              id="addToCart"
+              class="btn btn-primary"
+              data-id="<%= food._id %>"
+              data-name="<%= food.name %>"
+              data-price="<%= food.price %>"
+              >Add to cart</button
+            >
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <h3>Drink Products</h3>
+      </div>
+      <div class="row gap-2">
+        <% for (const drink of drinks) { %>
+        <div
+          class="card p-0"
+          style="width: 18rem"
+        >
+          <img
+            src="<%= drink.imgPath %>"
+            class="card-img-top"
+            alt="<%= drink.name %>"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= drink.name %></h5>
+            <p class="card-text text-truncate"><%= drink.desc %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Rp. <%= drink.price %></li>
+          </ul>
+          <div class="card-body">
+            <button
+              id="addToCart"
+              class="btn btn-primary"
+              data-id="<%= drink._id %>"
+              data-name="<%= drink.name %>"
+              data-price="<%= drink.price %>"
+              >Add to cart</button
+            >
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <h3>Appetizer Products</h3>
+      </div>
+      <div class="row gap-2">
+        <% for (const appetizer of appetizers) { %>
+        <div
+          class="card p-0"
+          style="width: 18rem"
+        >
+          <img
+            src="<%= appetizer.imgPath %>"
+            class="card-img-top"
+            alt="<%= appetizer.name %>"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= appetizer.name %></h5>
+            <p class="card-text text-truncate"><%= appetizer.desc %></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Rp. <%= appetizer.price %></li>
+          </ul>
+          <div class="card-body">
+            <button
+              id="addToCart"
+              class="btn btn-primary"
+              data-id="<%= appetizer._id %>"
+              data-name="<%= appetizer.name %>"
+              data-price="<%= appetizer.price %>"
+              >Add to cart</button
+            >
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </section>
+  </div>
+</div>

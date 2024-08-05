@@ -1,0 +1,62 @@
+<% layout('admin/layouts/admin') %>
+
+<div class="d-flex flex-column p-3">
+  <section class="d-flex flex-column gap-4 container-fluid">
+    <div class="mb-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h1 class="m-0">Customers</h1>
+          <p class="text-body-secondary">Manage customers for your store</p>
+        </div>
+        <div>
+          <a
+            href="customers/create"
+            class="btn btn-dark"
+          >
+            + Add New
+          </a>
+        </div>
+      </div>
+
+      <hr class="mt-0" />
+    </div>
+  </section>
+
+  <section class="d-flex flex-column gap-4 container-fluid">
+    <div class="border">
+      <table class="table m-0">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (const customer of customers) { %>
+          <tr class="align-middle">
+            <td><%= customer.username %></td>
+            <td><%= customer.email %></td>
+            <td><%= customer.role %></td>
+            <td class="w-25 text-center">
+              <a
+                href="/dashboard/customers/<%= customer._id %>"
+                class="btn btn-warning me-2"
+                >Edit</a
+              >
+              <form
+                class="d-inline"
+                action="/dashboard/customers/<%= customer._id %>?_method=DELETE"
+                method="POST"
+              >
+                <button class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

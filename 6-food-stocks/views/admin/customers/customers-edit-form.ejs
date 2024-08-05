@@ -1,0 +1,87 @@
+<% layout('admin/layouts/admin') %>
+
+<h1 class="text-center">Edit Customer</h1>
+<div class="col-6 offset-3">
+  <form
+    action="/dashboard/customers/<%= customer._id %>?_method=PUT"
+    method="POST"
+    class="validated-form"
+    novalidate
+  >
+    <div class="mb-3">
+      <label
+        for="username"
+        class="form-label"
+      >
+        Username
+      </label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        class="form-control"
+        value="<%= customer.username %>"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="email"
+        class="form-label"
+      >
+        Email
+      </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        value="<%= customer.email %>"
+        required
+      />
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <div class="mb-3">
+      <label
+        for="role"
+        class="form-label"
+      >
+        Role
+      </label>
+      <select
+        id="role"
+        name="role"
+        class="form-select"
+        required
+      >
+        <option
+          selected
+          hidden
+          disabled
+          value="<%= customer.role %>"
+        >
+          <%= customer.role %>
+        </option>
+        <option value="GUEST">GUEST</option>
+        <option value="ADMIN">ADMIN</option>
+      </select>
+
+      <div class="valid-feedback"> Looks good! </div>
+      <div class="invalid-feedback"> Fill out this field! </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-success"
+    >
+      Edit
+    </button>
+  </form>
+</div>
