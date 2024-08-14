@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/home.css"
+    />
+    <title>BestPoint - Jelajahi Bagian dari Dunia</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a
+            href="/"
+            class="navbar-brand"
+            >BestPoint</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a
+                  href="/"
+                  class="nav-link"
+                  >Home</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="navbar-nav">
+            <a
+              href="/places"
+              class="nav-link"
+              >Jelajah</a
+            >
+            <% if (!currentUser) { %>
+            <a
+              href="/register"
+              class="nav-link"
+              >Register</a
+            >
+            <a
+              href="/login"
+              class="nav-link"
+              >Login</a
+            >
+            <% } else { %>
+            <a
+              href="/logout"
+              onclick="
+                event.preventDefault();
+                document.querySelector('#logout-form').submit();
+              "
+              class="nav-link"
+              >Logout</a
+            >
+            <form
+              action="/logout"
+              id="logout-form"
+              method="POST"
+              style="display: none"
+            ></form>
+            <% } %>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero-section">
+      <div class="container">
+        <h1>BestPoints</h1>
+        <h4 class="subtitle"
+          >Discover the Best Points for your perfect vacation</h4
+        >
+
+        <div class="mt-4 btn-group-center">
+          <a
+            href="/places"
+            class="btn btn-outline-light"
+            >Jelajahi tempat</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
