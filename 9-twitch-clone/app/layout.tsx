@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 import './globals.css';
 
 import { ClerkProvider } from '@clerk/nextjs';
@@ -30,6 +31,10 @@ export default function RootLayout({
             forcedTheme="dark"
             storageKey="twc-theme"
           >
+            <Toaster
+              theme="light"
+              position="bottom-center"
+            />
             {children}
           </ThemeProvider>
         </body>
