@@ -10,6 +10,7 @@ interface CopyButtonProps {
 
 export const CopyButton = ({ value }: CopyButtonProps) => {
   const [isCopied, setIsCopied] = useState(false);
+
   const onCopy = () => {
     if (!value) return;
 
