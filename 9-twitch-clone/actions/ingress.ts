@@ -36,7 +36,9 @@ export const resetIngresses = async (hostIdentity: string) => {
   }
 
   for (const ingress of ingresses) {
-    await ingressClient.deleteIngress(ingress.ingressId);
+    if (ingress.ingressId) {
+      await ingressClient.deleteIngress(ingress.ingressId);
+    }
   }
 };
 
