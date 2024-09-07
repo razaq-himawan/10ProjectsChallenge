@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { NavLink } from './nav-link';
+import Image from 'next/image';
 
 const navigations = [
   { title: 'Homepage', path: '/' },
@@ -38,10 +39,15 @@ export const Navigation = () => {
         onClick={() => setOpen((prev) => !prev)}
         className="md:hidden"
       >
-        Menu
+        <Image
+          src="/menu.png"
+          alt=""
+          width={32}
+          height={32}
+        />
       </button>
       {open && (
-        <div className="absolute top-20 right-0 w-1/2 h-[calc(100vh_-_80px)] bg-dark flex flex-col items-center justify-center gap-2.5 md:hidden">
+        <div className="absolute top-20 right-0 w-1/2 h-[calc(100vh_-_80px)] z-10 bg-dark flex flex-col items-center justify-center gap-2.5 md:hidden">
           {navigations.map((navItem) => (
             <NavLink
               key={navItem.path}
