@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'About Page',
+  description: 'About description',
+};
 
 const AboutPage = () => {
   return (

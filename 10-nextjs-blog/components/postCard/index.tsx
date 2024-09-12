@@ -20,7 +20,9 @@ export const PostCard = ({ post }: PostCardProps) => {
             />
           </div>
         )}
-        <span className="text-xs -rotate-90 m-auto">10.09.2024</span>
+        <span className="text-xs -rotate-90 m-auto">
+          {post.createdAt.toString().split('T')[0]}
+        </span>
       </div>
       <div className="">
         <h3 className="w-[90%] text-2xl mb-5 font-bold">{post.title}</h3>

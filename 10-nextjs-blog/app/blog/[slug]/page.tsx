@@ -1,5 +1,6 @@
 import { PostUser } from '@/components/postUser';
 import { getPost } from '@/lib/data';
+import { PostType } from '@/lib/types';
 import Image from 'next/image';
 import { Suspense } from 'react';
 
@@ -10,29 +11,37 @@ interface BlogPostProps {
 }
 
 // Fetch Data With An API
-// const getData = async (slug: number): Promise<PostType> => {
-//   const res = await fetch(
-//     `https://jsonplaceholder.typicode.com/posts/${slug}`,
-//     {
-//       next: { revalidate: 3600 },
-//     }
-//   );
+const getData = async (slug: string): Promise<PostType> => {
+  const res = await fetch(`http://localhost:3000/api/blog/${slug}`, {
+    next: { revalidate: 3600 },
+  });
 
-//   if (!res.ok) {
-//     throw new Error('Something went wrong');
-//   }
+  if (!res.ok) {
+    throw new Error('Something went wrong');
+  }
 
-//   return res.json();
-// };
+  return res.json();
+};
+
+export const generateMetadata = async ({ params }: BlogPostProps) => {
+  const { slug } = params;
+
+  const post = await getPost(slug);
+
+  return {
+    title: post?.title,
+    description: post?.desc,
+  };
+};
 
 const SinglePostPage = async ({ params }: BlogPostProps) => {
   const { slug } = params;
 
   // Fetch Data With An API
-  // const post = await getData(slug);
+  const post = await getData(slug);
 
   // Fetch Data Without An API
-  const post = await getPost(slug);
+  // const post = await getPost(slug);
   return (
     <div className="flex gap-24">
       {post?.img && (
@@ -55,7 +64,7 @@ const SinglePostPage = async ({ params }: BlogPostProps) => {
             <div className="flex flex-col gap-1">
               <span className="text-gray-500 font-bold">Published</span>
               <span className="font-medium">
-                {post?.createdAt.toString().slice(4, 16)}
+                {post?.createdAt.toString().split('T')[0]}
               </span>
             </div>
           </div>
