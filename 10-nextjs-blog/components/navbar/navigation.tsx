@@ -21,9 +21,6 @@ const navigations = [
 export const Navigation = ({ session }: NavigationProps) => {
   const [open, setOpen] = useState(false);
 
-  // Temporary
-  const isAdmin = true;
-
   return (
     <div>
       <div className="h-20 flex justify-between items-center gap-2.5 max-md:hidden">
