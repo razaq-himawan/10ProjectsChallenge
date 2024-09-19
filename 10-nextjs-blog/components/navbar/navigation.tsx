@@ -3,6 +3,13 @@
 import { useState } from 'react';
 import { NavLink } from './nav-link';
 import Image from 'next/image';
+import { handleLogout } from '@/lib/actions';
+
+import type { Session } from 'next-auth';
+
+interface NavigationProps {
+  session: Session | null;
+}
 
 const navigations = [
   { title: 'Homepage', path: '/' },
@@ -11,11 +18,10 @@ const navigations = [
   { title: 'Blog', path: '/blog' },
 ];
 
-export const Navigation = () => {
+export const Navigation = ({ session }: NavigationProps) => {
   const [open, setOpen] = useState(false);
 
   // Temporary
-  const session = true;
   const isAdmin = true;
 
   return (
@@ -27,11 +33,15 @@ export const Navigation = () => {
             item={navItem}
           />
         ))}
-        {isAdmin && <NavLink item={{ title: 'Admin', path: '/admin' }} />}
+        {session?.user?.isAdmin && (
+          <NavLink item={{ title: 'Admin', path: '/admin' }} />
+        )}
         {session && (
-          <button className="p-2.5 font-bold bg-white text-dark rounded-md">
-            Logout
-          </button>
+          <form action={handleLogout}>
+            <button className="p-2.5 font-bold bg-white text-dark rounded-md">
+              Logout
+            </button>
+          </form>
         )}
         {!session && <NavLink item={{ title: 'Login', path: '/login' }} />}
       </div>
