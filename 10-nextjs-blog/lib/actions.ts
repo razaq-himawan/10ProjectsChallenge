@@ -18,7 +18,7 @@ interface SuccessState {
 
 type FormState = ErrorState | SuccessState | undefined;
 
-export const addPost = async (formData: FormData) => {
+export const addPost = async (_prevState: FormState, formData: FormData) => {
   const { title, desc, slug, userId } = Object.fromEntries(formData);
 
   try {
@@ -33,6 +33,7 @@ export const addPost = async (formData: FormData) => {
     await newPost.save();
     console.log('Saved to db');
     revalidatePath('/blog');
+    revalidatePath('/admin');
   } catch (err) {
     console.error(err);
     return {
@@ -48,6 +49,42 @@ export const deletePost = async (formData: FormData) => {
     await Post.findByIdAndDelete(id);
 
     revalidatePath('/blog');
+    revalidatePath('/admin');
+  } catch (err) {
+    console.error(err);
+    return {
+      error: 'Something went wrong!',
+    };
+  }
+};
+
+export const addUser = async (_prevState: FormState, formData: FormData) => {
+  const { username, email, password, img } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+    const newUser = new User({ username, email, password, img });
+
+    await newUser.save();
+    console.log('Saved to db');
+    revalidatePath('/admin');
+  } catch (err) {
+    console.error(err);
+    return {
+      error: 'Something went wrong!',
+    };
+  }
+};
+
+export const deleteUser = async (formData: FormData) => {
+  const id = formData.get('id');
+  try {
+    connectToDb();
+
+    await Post.deleteMany({ userId: id });
+    await User.findByIdAndDelete(id);
+
+    revalidatePath('/admin');
   } catch (err) {
     console.error(err);
     return {
